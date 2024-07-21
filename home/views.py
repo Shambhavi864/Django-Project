@@ -8,7 +8,6 @@ from rest_framework.views import APIView
 from rest_framework import viewsets, status
 
 from django.contrib.auth import authenticate
-from rest_framework.authtoken.models import Token
     
 
     
@@ -52,7 +51,5 @@ class LoginAPI(APIView):
                 'status': False,
                 'message': 'Invalid Credentials'
             }, status.HTTP_400_BAD_REQUEST)
-
-
-        token, _ = Token.objects.get_or_create(user = user)
-        return Response({'status': True, 'message': 'user_logIn', 'token': str(token)}, status.HTTP_201_CREATED)
+        
+        return Response({'status': True, 'message': 'user_logIn'}, status.HTTP_201_CREATED)
